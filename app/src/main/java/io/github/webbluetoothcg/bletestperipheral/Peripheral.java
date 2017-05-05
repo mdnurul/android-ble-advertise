@@ -69,6 +69,7 @@ public class Peripheral extends Activity implements ServiceFragmentDelegate {
   private AdvertiseData mAdvScanResponse;
   private AdvertiseSettings mAdvSettings;
   private BluetoothLeAdvertiser mAdvertiser;
+
   private final AdvertiseCallback mAdvCallback = new AdvertiseCallback() {
     @Override
     public void onStartFailure(int errorCode) {

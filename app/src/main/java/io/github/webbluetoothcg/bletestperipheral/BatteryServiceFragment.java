@@ -17,6 +17,7 @@
 package io.github.webbluetoothcg.bletestperipheral;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
@@ -112,7 +113,7 @@ public class BatteryServiceFragment extends ServiceFragment {
   public BatteryServiceFragment() {
     mBatteryLevelCharacteristic =
         new BluetoothGattCharacteristic(BATTERY_LEVEL_UUID,
-            BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY,
+            BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_NOTIFY,
             BluetoothGattCharacteristic.PERMISSION_READ);
 
     mBatteryLevelCharacteristic.addDescriptor(
@@ -210,5 +211,12 @@ public class BatteryServiceFragment extends ServiceFragment {
             .show();
       }
     });
+  }
+
+  @Override
+  public int writeCharacteristic(BluetoothGattCharacteristic characteristic, int offset, byte[] value) {
+
+
+    return BluetoothGatt.GATT_SUCCESS;
   }
 }
